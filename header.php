@@ -31,12 +31,13 @@
 					</div>
 					<div class="tb-data">
 						<span> <?php _e('Call us','fabthemes');?> </span>
-
+						<span>8(961)342-76-73<span>
 						<?php echo ft_of_get_option('fabthemes_phone','');?>
 					</div>
 				</div>
 			</div>
 			<div class="columns medium-4">
+			<!--
 				<div class="tb-box">
 					<div class="tb-icon">
 						<i class="fa fa-map-marker"></i>
@@ -46,6 +47,7 @@
 						<?php echo ft_of_get_option('fabthemes_email','');?>
 					</div>
 				</div>
+				-->
 			</div>
 			<div class="columns medium-4">
 				<div class="tb-box">
@@ -54,6 +56,7 @@
 					</div>
 					<div class="tb-data">
 						<span> <?php _e('Reach us','fabthemes');?> </span>
+						<span>blagocheb@mail.ru<span>
 						<?php echo ft_of_get_option('fabthemes_address','');?>
 					</div>
 				</div>
