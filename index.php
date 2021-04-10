@@ -14,7 +14,7 @@
 
 get_header(); ?>
 
-<div class="page-header">
+<div class="blagocheb-page-header">
 	<div class="row">
 		<div class="columns small-12">
 				
