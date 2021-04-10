@@ -32,7 +32,8 @@
 					<div class="tb-data">
 						<span> <?php _e('Call us','fabthemes');?> </span>
 						<span>8(961)342-76-73<span>
-						<?php echo ft_of_get_option('fabthemes_phone','');?>
+						<?php get_post_meta(get_the_ID(),'_call_us', true);?>
+						
 					</div>
 				</div>
 			</div>
