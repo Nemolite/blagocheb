@@ -45,7 +45,7 @@ add_action( 'admin_enqueue_scripts', 'blagocheb_scripts_style' );
   add_action( 'admin_menu', 'blagocheb_custem_menu', 200 );
 
   function blagocheb_custem_menu() {
-    $page_title = "Настрока темы";
+    $page_title = "Настройка темы";
     $menu_title ="Настройка";
     $capability = "manage_options";
     $menu_slug = "custemer";
@@ -121,6 +121,18 @@ function blagocheb_admin_custem(){
 	wp_die(); 
 }
 
+/**
+ * Извлечение данных из метаполей
+ */
 
+ function blagocheb_get_meta_date($field){
+  global $wpdb;
+  $table_name = $wpdb->get_blog_prefix() . 'blagocheb_table';
+
+   if (!empty($field)){
+    $velue = $wpdb->get_var( "SELECT $field FROM $table_name;" );
+    return $velue;
+   }
+ }
 
 ?>

@@ -12,10 +12,7 @@ jQuery(document).ready(function() {
         data:getDateForm,
         processData : false,
         contentType : false,              
-        type:'POST', 
-          success:function(data){
-              alert(data);
-          }
+        type:'POST'        
       });
       return false;
   });

@@ -31,8 +31,8 @@
 					</div>
 					<div class="tb-data">
 						<span> <?php _e('Call us','fabthemes');?> </span>
-						<span>8(961)342-76-73<span>
-						<?php get_post_meta(get_the_ID(),'_call_us', true);?>
+						<span><?php echo blagocheb_get_meta_date('num_mobil');?><span>
+						
 						
 					</div>
 				</div>
@@ -57,8 +57,7 @@
 					</div>
 					<div class="tb-data">
 						<span> <?php _e('Reach us','fabthemes');?> </span>
-						<span>blagocheb@mail.ru<span>
-						<?php echo ft_of_get_option('fabthemes_address','');?>
+						<span><span><?php echo blagocheb_get_meta_date('email');?><span><span>						
 					</div>
 				</div>
 			</div>
