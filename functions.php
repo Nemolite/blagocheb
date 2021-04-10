@@ -33,6 +33,41 @@
    
   }
 
+  /**
+   * Произвольные поля для настройки сайта
+   */
+
+  add_action( 'admin_menu', 'blagocheb_custem_menu', 200 );
+
+  function blagocheb_custem_menu() {
+    $page_title = "Настрока темы";
+    $menu_title ="Настройка";
+    $capability = "manage_options";
+    $menu_slug = "custemer";
+    $function = "blagocheb_custem_field";
+    $icon_url = "dashicons-admin-page";
+    $position ="100";
+
+    add_menu_page( 
+        $page_title, 
+        $menu_title, 
+        $capability, 
+        $menu_slug, 
+        $function, 
+        $icon_url, 
+        $position );
+  }   
+
+  
+  function blagocheb_custem_field() {
+      
+      echo '<div class="wrap">';
+          echo '<h2>'. get_admin_page_title() .'</h2>';  
+     echo "test";     
+      echo '</div>';
+  
+  }
+
 
 
 ?>
