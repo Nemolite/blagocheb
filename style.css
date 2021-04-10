@@ -20,3 +20,11 @@ h1#fix-site-title {
 .info-box p {
   font-size: 16px;
 }
+
+.blagocheb-page-header {
+  background-image: url(img/imgfon.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+  color: #fff;
+  padding: 120px 0px 0px 0px;
+}

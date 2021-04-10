@@ -3,10 +3,10 @@
 * Функции для дочерней темы
 */
 
-
-
-
-
+function blagocheb_scripts_style() {
+	wp_enqueue_script( 'blagocheb-script', get_stylesheet_directory_uri() . '/js/main.js', array(), '1.0.0', true );
+}
+add_action( 'admin_enqueue_scripts', 'blagocheb_scripts_style' );
 
 /**
  * Подключение произвольных полей с помощью Optoion Tree
@@ -72,34 +72,12 @@
     <form name="admin_custem" id="admin_custem">
       <fieldset>
         <legend>Верхняя часть ( header )</legend>
-          <p><label for="name">Номер телефона в раздел - Позвоните нам</label><input type="text" id="num_mobil"></p>
-          <p><label for="email">E-mail в раздел - Напишите нам</label><input type="email" id="email"></p>
+          <p><label for="name">Номер телефона в раздел - Позвоните нам</label><input type="text" name="num_mobil"></p>
+          <p><label for="email">E-mail в раздел - Напишите нам</label><input type="email" id="email" name="email"></p>
       </fieldset>
-          <p><input id="btn_admin_custem" type="button" value="Сохранить"></p>
-    </form>
-    <script>
-    jQuery(document).ready(function($) {
-      JQuery('#btn_admin_custem').submit(function(){
-		    let admin_custem = document.querySelector('#admin_custem');
-        let getDateForm = new FormData(admin_custem);
-      
-      getDateForm.append("action", "admin_custem"); 
-      $.ajax({
-          url:'/wp-admin/admin-ajax.php', 
-          data:getDateForm,
-          processData : false,
-          contentType : false,              
-          type:'POST', 
-			success:function(data){
-				alert(data);
-			}
-		});
-		return false;
-	});
-});
-    </script>
-     <?php     
-      echo '</div>';  
+          <p><input id="btn_admin_custem" type="submit" value="Сохранить"></p>
+    </form>  
+     <?php         
   }
 
 /**
@@ -109,7 +87,36 @@
 add_action( 'wp_ajax_admin_custem', 'blagocheb_admin_custem' );
 function blagocheb_admin_custem(){
 	
-	echo "test";
+  if (isset($_POST['num_mobil'])&& $_POST['num_mobil'] != ''){        
+    $num_mobil= $_POST['num_mobil'];
+  }
+
+  if (isset($_POST['email'])&& $_POST['email'] != ''){        
+    $email= $_POST['email'];
+  }
+
+  global $wpdb;
+
+	require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+
+	$table_name = $wpdb->get_blog_prefix() . 'blagocheb_table';
+	$charset_collate = "DEFAULT CHARACTER SET {$wpdb->charset} COLLATE {$wpdb->collate}";
+
+	$sql = "CREATE TABLE {$table_name} (
+	id  bigint(20) unsigned NOT NULL auto_increment,
+	num_mobil varchar(255) NOT NULL default '',
+  email varchar(255) NOT NULL default '',
+	PRIMARY KEY  (id)
+	
+	)
+	{$charset_collate};";
+
+	dbDelta($sql);
+
+  $wpdb->update( $table_name,
+	[ 'num_mobil' => $num_mobil, 'email' => $email ],
+	[ 'ID' => 1 ]
+);
 
 	wp_die(); 
 }
