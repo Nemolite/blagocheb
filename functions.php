@@ -135,4 +135,22 @@ function blagocheb_admin_custem(){
    }
  }
 
+ /**
+  * Банеры "Спасибо за помощь"
+  */
+require 'inc/baners.php'; 
+
+
+function blagocheb_register_widgets(){
+	register_sidebar( array(
+		'name' => 'Спасибо за помощь',
+		'id' => 'baners',
+		'description' => 'Банеры в сайтбаре',
+		'before_widget' => '',
+		'after_widget' => '',
+		'before_title' => '<h4 class="widget-title"><span class="title-wrapper">',
+		'after_title' => '</span></h4>',
+	) );
+}
+add_action( 'widgets_init', 'blagocheb_register_widgets' );
 ?>
